@@ -2,47 +2,40 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Box, Button, CardActionArea, CardActions } from "@mui/material";
+
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
 
 const Products = ({ products }) => {
   return (
-    <>
-      {products.map((product) => (
-        <Card sx={{ minWidth:'345px' }}>
-          <CardActionArea sx={{
-            backgroundColor: '#ece81a99'
-          }}>
-            <CardMedia
-              component="img"
-              height="140"
-              image="/assets/boca.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {product.name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Color: {product.color}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Size: {product.size}
-              </Typography>
-              <Typography variant="body2" color="text.primary">
-                Price: {product.price}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions sx={{
-            backgroundColor: '#90d3c4;'
-          }}>
-            <Button size="small" color="primary" sx={{color:'#d7f5ee'}}>
-              Add to cart
-            </Button>
-          </CardActions>
-        </Card>
+    <ImageList
+      sx={{
+        width: '100%',
+        height: '650px',
+        margin: "auto",
+      }}
+    >
+      {products.map((product, i) => (
+        <ImageListItem key={i} sx={{margin:'0 auto 20px', width:'70%'}}>
+          <img
+            src={`/assets/boca.jpg`}
+            srcSet={`/assets/boca.jpg?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={product.name}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title={product.name}
+            subtitle={<span>Price {product.price}</span>}
+            position="below"
+            sx={{backgroundColor:'#324b46'}}
+          />
+
+          <Button variant="contained" color="success">Agregar al carrito</Button>
+        </ImageListItem>
       ))}
-    </>
+    </ImageList>
   );
 };
 export default Products;

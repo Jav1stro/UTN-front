@@ -13,11 +13,11 @@ import { useRouter } from "next/router";
 
 const actions = [
   {
-    icon: 'P',
+    icon: "P",
     name: "Products",
   },
-  { icon: 'H', name: "Home" },
-  { icon: <ShareIcon />, name: "Share" },
+  { icon: "H", name: "Home" },
+  { icon: "L", name: "Login" },
 ];
 
 export default function SpeedDialTooltipOpen() {
@@ -34,8 +34,8 @@ export default function SpeedDialTooltipOpen() {
       case "Home":
         router.push("/");
         break;
-      case "Share":
-        router.push("/products");
+      case "Login":
+        router.push("/login");
         break;
       default:
         break;
@@ -64,10 +64,10 @@ export default function SpeedDialTooltipOpen() {
         onOpen={handleOpen}
         open={open}
         FabProps={{
-            style: {
-              backgroundColor: "#f3eee1",
-            },
-          }}
+          style: {
+            backgroundColor: "#f3eee1",
+          },
+        }}
       >
         {actions.map((action) => (
           <SpeedDialAction
@@ -77,10 +77,10 @@ export default function SpeedDialTooltipOpen() {
             tooltipOpen
             onClick={() => handleClick(action)}
             FabProps={{
-                style: {
-                  backgroundColor: "#f3eee1",
-                },
-              }}
+              style: {
+                backgroundColor: "#f3eee1",
+              },
+            }}
           />
         ))}
       </SpeedDial>
